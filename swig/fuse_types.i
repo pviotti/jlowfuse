@@ -14,6 +14,7 @@ typedef struct fuse_req * fuse_req_t;
 %apply unsigned long int { __fsblkcnt64_t }
 %apply unsigned long int { __fsfilcnt64_t }
 %apply unsigned long int { __off64_t }
+%apply unsigned long int { __off_t }
 %apply unsigned long int { __dev_t }
 
 %apply unsigned short { __mode_t}

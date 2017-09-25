@@ -43,7 +43,7 @@ struct statvfs {
         /* man statfs: "Nobody knows what f_fsid is supposed to contain" */
         %rename(fsid) f_fsid; 
         unsigned long int f_fsid;
-        int __f_unused;
+        /* int __f_unused; */
         %rename(flag) f_flag;
         unsigned long int f_flag;
         %rename(namemax) f_namemax;
@@ -75,36 +75,35 @@ struct fuse_file_info {
 struct stat {
         %rename(dev) st_dev;
         __dev_t st_dev;
-	%immutable;
-	unsigned short int __pad1;
-	%mutable;
-        %rename(_ino) __st_ino;
-        __ino_t __st_ino;
-        %rename(mode) st_mode;
-        __mode_t st_mode;
         %rename(nlink) st_nlink;
         __nlink_t st_nlink;
+        %rename(mode) st_mode;
+        __mode_t st_mode;
         %rename(uid) st_uid;
         __uid_t st_uid;
         %rename(gid) st_gid;
         __gid_t st_gid;
+    %immutable;
+        int __pad0;
+    %mutable;
         %rename(rdev) st_rdev;
         __dev_t st_rdev;
-	%immutable;
-        unsigned short int __pad2;
-	%mutable;
         %rename(size) st_size;
-        __off64_t st_size;
+        __off_t st_size;
         %rename(blksize) st_blksize;
         __blksize_t st_blksize;
         %rename(blocks) st_blocks;
-        __blkcnt64_t st_blocks;
+        __blkcnt_t st_blocks;
         %rename(atim) st_atim;
         struct timespec st_atim;
         %rename(mtim) st_mtim;
         struct timespec st_mtim;
         %rename(ctim) st_ctim;
         struct timespec st_ctim;
+     %immutable;
+        %rename(glibres) __glibc_reserved;
+        long int __glibc_reserved[3];
+     %mutable;
         %rename(ino) st_ino;
           __ino64_t st_ino;
 };
