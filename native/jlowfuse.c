@@ -174,7 +174,7 @@ JNIEXPORT jlong JNICALL Java_jlowfuse_JLowFuseArgs_makeFuseArgs
 
         int i;
         struct fuse_args *args;
-        char *str;
+        const char *str;
         char *mount_point;
         int multi_threaded = -1;
         int foreground = -1;
